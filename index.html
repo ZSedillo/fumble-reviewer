@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FumbleReviewer | Unbiased Date Review</title>
+  <!-- Modern Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Floating Particles Background -->
+  <div class="background-particles" id="particles-container"></div>
+
+  <main class="app-container">
+    <div class="glass-card" id="main-card">
+      
+      <!-- STEP 1: Welcome Screen -->
+      <section class="step-pane active" id="step-welcome">
+        <div class="icon-header">
+          <span class="emoji-glow">✨</span>
+        </div>
+        <h1 class="brand-title">Fumble<span class="highlight">Reviewer</span></h1>
+        <p class="subtitle font-italic">"Because every great date deserves a detailed retrospective."</p>
+        
+        <div class="divider"></div>
+        
+        <p class="description">
+          Welcome to the official, highly professional, and completely <span class="unbiased-highlight">unbiased</span> review system. Let's analyze how our date went! Your honest feedback helps improve future interactions... para hindi ma-fumble yung ka-date mo.
+        </p>
+
+        <button class="btn btn-primary" id="btn-start">
+          <span>Start Review</span>
+          <svg class="btn-arrow" viewBox="0 0 24 24" width="18" height="18">
+            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </button>
+      </section>
+
+      <!-- STEP 2: Rating Form -->
+      <section class="step-pane" id="step-rating">
+        <h2 class="section-title">The <span class="highlight">Scorecard</span></h2>
+        <p class="step-instructions">Honest feedback will help me clear my bugs para hindi na ma-fumble ang deployment natin.</p>
+        
+        <form id="rating-form" class="rating-form">
+          <!-- Rating 1: Performance -->
+          <div class="rating-group" data-rating-type="performance">
+            <label class="rating-label">
+              <span>Date Performance</span>
+              <span class="rating-desc" id="desc-performance">Select rating</span>
+            </label>
+            <div class="star-rating-container" id="stars-performance">
+              <!-- JS will inject stars, or we hardcode them for instant render -->
+              <button type="button" class="star-btn" data-value="1" aria-label="1 Star"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.431 8.2 1.191-5.934 5.787 1.4 8.168L12 18.896l-7.334 3.857 1.4-8.168L.132 9.209l8.2-1.191L12 .587z"/></svg></button>
+              <button type="button" class="star-btn" data-value="2" aria-label="2 Stars"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.431 8.2 1.191-5.934 5.787 1.4 8.168L12 18.896l-7.334 3.857 1.4-8.168L.132 9.209l8.2-1.191L12 .587z"/></svg></button>
+              <button type="button" class="star-btn" data-value="3" aria-label="3 Stars"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.431 8.2 1.191-5.934 5.787 1.4 8.168L12 18.896l-7.334 3.857 1.4-8.168L.132 9.209l8.2-1.191L12 .587z"/></svg></button>
+              <button type="button" class="star-btn" data-value="4" aria-label="4 Stars"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.431 8.2 1.191-5.934 5.787 1.4 8.168L12 18.896l-7.334 3.857 1.4-8.168L.132 9.209l8.2-1.191L12 .587z"/></svg></button>
+              <button type="button" class="star-btn" data-value="5" aria-label="5 Stars"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.431 8.2 1.191-5.934 5.787 1.4 8.168L12 18.896l-7.334 3.857 1.4-8.168L.132 9.209l8.2-1.191L12 .587z"/></svg></button>
+            </div>
+          </div>
+
+          <!-- Rating 2: Jokes -->
+          <div class="rating-group" data-rating-type="jokes">
+            <label class="rating-label">
+              <span>Quality of Jokes</span>
+              <span class="rating-desc" id="desc-jokes">Select rating</span>
+            </label>
+            <div class="star-rating-container" id="stars-jokes">
+              <button type="button" class="star-btn" data-value="1" aria-label="1 Star"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.431 8.2 1.191-5.934 5.787 1.4 8.168L12 18.896l-7.334 3.857 1.4-8.168L.132 9.209l8.2-1.191L12 .587z"/></svg></button>
+              <button type="button" class="star-btn" data-value="2" aria-label="2 Stars"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.431 8.2 1.191-5.934 5.787 1.4 8.168L12 18.896l-7.334 3.857 1.4-8.168L.132 9.209l8.2-1.191L12 .587z"/></svg></button>
+              <button type="button" class="star-btn" data-value="3" aria-label="3 Stars"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.431 8.2 1.191-5.934 5.787 1.4 8.168L12 18.896l-7.334 3.857 1.4-8.168L.132 9.209l8.2-1.191L12 .587z"/></svg></button>
+              <button type="button" class="star-btn" data-value="4" aria-label="4 Stars"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.431 8.2 1.191-5.934 5.787 1.4 8.168L12 18.896l-7.334 3.857 1.4-8.168L.132 9.209l8.2-1.191L12 .587z"/></svg></button>
+              <button type="button" class="star-btn" data-value="5" aria-label="5 Stars"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.431 8.2 1.191-5.934 5.787 1.4 8.168L12 18.896l-7.334 3.857 1.4-8.168L.132 9.209l8.2-1.191L12 .587z"/></svg></button>
+            </div>
+          </div>
+
+          <!-- Rating 3: Movie -->
+          <div class="rating-group" data-rating-type="movie">
+            <label class="rating-label">
+              <span>The Movie we Watched</span>
+              <span class="rating-desc" id="desc-movie">Select rating</span>
+            </label>
+            <div class="star-rating-container" id="stars-movie">
+              <button type="button" class="star-btn" data-value="1" aria-label="1 Star"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.431 8.2 1.191-5.934 5.787 1.4 8.168L12 18.896l-7.334 3.857 1.4-8.168L.132 9.209l8.2-1.191L12 .587z"/></svg></button>
+              <button type="button" class="star-btn" data-value="2" aria-label="2 Stars"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.431 8.2 1.191-5.934 5.787 1.4 8.168L12 18.896l-7.334 3.857 1.4-8.168L.132 9.209l8.2-1.191L12 .587z"/></svg></button>
+              <button type="button" class="star-btn" data-value="3" aria-label="3 Stars"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.431 8.2 1.191-5.934 5.787 1.4 8.168L12 18.896l-7.334 3.857 1.4-8.168L.132 9.209l8.2-1.191L12 .587z"/></svg></button>
+              <button type="button" class="star-btn" data-value="4" aria-label="4 Stars"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.431 8.2 1.191-5.934 5.787 1.4 8.168L12 18.896l-7.334 3.857 1.4-8.168L.132 9.209l8.2-1.191L12 .587z"/></svg></button>
+              <button type="button" class="star-btn" data-value="5" aria-label="5 Stars"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.431 8.2 1.191-5.934 5.787 1.4 8.168L12 18.896l-7.334 3.857 1.4-8.168L.132 9.209l8.2-1.191L12 .587z"/></svg></button>
+            </div>
+          </div>
+
+          <!-- Comments Area -->
+          <div class="rating-group text-group">
+            <label class="rating-label" for="comments">
+              <span>Additional Comments</span>
+              <span class="rating-desc">Optional remarks</span>
+            </label>
+            <textarea id="comments" name="comments" rows="3" placeholder="Okay lang ba ako? Am I funny? Anong needs ko ayusin?"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" id="btn-submit-rating">
+            <span>Next Section</span>
+            <svg class="btn-arrow" viewBox="0 0 24 24" width="18" height="18">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </button>
+        </form>
+      </section>
+
+      <!-- STEP 3: Joke Question -->
+      <section class="step-pane" id="step-joke-question">
+        <div class="icon-header">
+          <span class="emoji-glow">🥺</span>
+        </div>
+        <h2 class="section-title">Critical <span class="highlight">Validation</span></h2>
+        <p class="question-text">Benta ba sa'yo mga jokes ko? 🥺</p>
+        
+        <div class="button-choice-container" id="container-joke-btns">
+          <button class="btn btn-success btn-choice-yes" id="btn-joke-yes">Oo naman, certified veteran! 😂</button>
+          <button class="btn btn-danger btn-choice-no" id="btn-joke-no">Hindi, korny mo eh 🙄</button>
+        </div>
+      </section>
+
+      <!-- STEP 4: "Really?" Screen -->
+      <section class="step-pane" id="step-really-question">
+        <div class="icon-header">
+          <span class="emoji-glow">🤨</span>
+        </div>
+        <h2 class="section-title">Security <span class="highlight">Verification</span></h2>
+        <p class="question-text">Really?</p>
+        <p class="question-subtext">Are you 100% sure about that answer?</p>
+        
+        <div class="button-choice-container" id="container-really-btns">
+          <button class="btn btn-success btn-choice-yes" id="btn-really-yes">Yes, definitely! ❤️</button>
+          <button class="btn btn-danger btn-choice-no" id="btn-really-no">No, wait... 🤔</button>
+        </div>
+      </section>
+
+      <!-- STEP 5: Success / Validation Complete Screen -->
+      <section class="step-pane" id="step-success">
+        <canvas id="confetti-canvas"></canvas>
+        <div class="success-icon-container">
+          <div class="success-ring"></div>
+          <span class="success-check">✓</span>
+        </div>
+        
+        <h2 class="section-title text-success">Validation Complete! B)</h2>
+        <p class="override-badge">METRICS LOGGED</p>
+        
+        <div class="override-box">
+          <p class="override-text">
+            System metrics confirmed.<br><br>Sabi mo 'yan ah, walang bawian! Pero will do better for you. Stay tuned for our next date! 😉
+          </p>
+        </div>
+
+        <!-- Main Action Button to trigger email submission -->
+        <button class="btn btn-primary" id="btn-final-action" style="margin-top: 10px; margin-bottom: 25px;">
+          <span>Log Data & Close App</span>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+          </svg>
+        </button>
+        
+        <div class="divider" id="final-divider" style="display: none;"></div>
+        
+        <div class="submission-status" id="submission-status" style="display: none; justify-content: center; align-items: center; gap: 12px; margin-bottom: 20px;">
+          <div class="spinner-small" id="status-spinner"></div>
+          <p id="status-message">Transmitting date scorecard to Zandro's databank...</p>
+        </div>
+
+        <div class="demo-warning-card" id="demo-warning" style="display: none;">
+          <div class="warning-icon">⚠️</div>
+          <div>
+            <h4>Local Demo Active!</h4>
+            <p>To receive this rating directly at <strong>sedillozandro720@gmail.com</strong>, remember to paste your Web3Forms Access Key in <code class="code-highlight">config.js</code>.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="app-footer">
+    <p>FumbleReviewer &copy; 2026. Handcrafted for premium romance.</p>
+  </footer>
+
+  <!-- Include Configuration & Application Scripts -->
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
